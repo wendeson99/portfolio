@@ -21,12 +21,12 @@
             background-color: var(--bg); 
             color: var(--text); 
             overflow-x: hidden;
-            padding-top: 80px; /* Prevents content from hiding under fixed navbar */
+            padding-top: 80px;
         }
         
-        /* ==================== UPDATED NAVIGATION BAR ==================== */
+        /* ==================== NAVIGATION WITH PHOTO ==================== */
         nav { 
-            padding: 1rem 8%; 
+            padding: 0.5rem 8%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
@@ -39,10 +39,25 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
-        .logo { 
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .profile-photo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+        
+        .logo-text { 
             font-family: 'Space Grotesk', sans-serif; 
             font-weight: 700; 
-            font-size: 1.4rem; 
+            font-size: 1.2rem; 
             color: var(--accent); 
             letter-spacing: 1px;
             text-decoration: none;
@@ -125,6 +140,15 @@
             .nav-menu.active {
                 left: 0;
             }
+
+            .logo-text {
+                font-size: 1rem;
+            }
+
+            .profile-photo {
+                width: 35px;
+                height: 35px;
+            }
         }
         /* ==================== END NAVIGATION STYLES ==================== */
 
@@ -172,7 +196,7 @@
         /* Grid Layouts */
         section { 
             padding: 6rem 10%; 
-            scroll-margin-top: 80px; /* Ensures sections don't hide under navbar when jumping */
+            scroll-margin-top: 80px;
         }
         .grid { 
             display: grid; 
@@ -224,6 +248,7 @@
             cursor: pointer; 
             display: inline-block; 
             border: none; 
+            text-decoration: none;
         }
         .btn-main { 
             background: var(--accent); 
@@ -263,9 +288,13 @@
 </head>
 <body>
 
-    <!-- ==================== UPDATED NAVIGATION WITH MENU ==================== -->
+    <!-- ==================== NAVIGATION WITH YOUR PHOTO ==================== -->
     <nav>
-        <a href="#home" class="logo">WENDOSEN.BELAY</a>
+        <a href="#home" class="logo-container">
+            <!-- YOUR PHOTO HERE - Place aa.JPEG in the same folder as this HTML file -->
+            <img src="aa.JPEG" alt="Wendosen Belay" class="profile-photo" onerror="this.style.display='none'">
+            <span class="logo-text">WENDOSEN.BELAY</span>
+        </a>
         <ul class="nav-menu" id="nav-menu">
             <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="#expertise" class="nav-link">Skills</a></li>
@@ -281,7 +310,7 @@
     </nav>
     <!-- ==================== END NAVIGATION ==================== -->
 
-    <!-- HOME SECTION (added id="home") -->
+    <!-- HOME SECTION -->
     <header id="home" class="hero">
         <h1>Building Infrastructure, <span>Teaching Innovation.</span></h1>
         <p>I am a System Administrator and IT Educator with 7+ years of experience in ERP implementation, Network Security, and Professional Technical Instruction.</p>
@@ -296,7 +325,7 @@
         <a href="mailto:Wendosenbelay1@gmail.com" class="btn btn-main">Contact for Satcom College</a>
     </header>
 
-    <!-- EXPERTISE SECTION (Skills) -->
+    <!-- EXPERTISE SECTION -->
     <section id="expertise">
         <h2 style="font-family: 'Space Grotesk'; font-size: 2.5rem; text-align: center;">Core Competencies</h2>
         <div class="grid">
@@ -318,7 +347,7 @@
         </div>
     </section>
 
-    <!-- CAREER SECTION (Experience) -->
+    <!-- CAREER SECTION -->
     <section id="career" style="background: rgba(255,255,255,0.02);">
         <h2 style="font-family: 'Space Grotesk'; text-align: center;">Verified Excellence</h2>
         <div style="max-width: 900px; margin: 0 auto;">
@@ -352,7 +381,7 @@
         </div>
     </section>
 
-    <!-- CONTACT SECTION (new) -->
+    <!-- CONTACT SECTION -->
     <section id="contact" style="text-align: center; background: rgba(255,255,255,0.02);">
         <h2 style="font-family: 'Space Grotesk'; font-size: 2.5rem; margin-bottom: 2rem;">Let's Connect</h2>
         <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin: 0 auto 2rem;">
@@ -376,7 +405,7 @@
         <p style="font-size: 0.8rem; margin-top: 2rem; color: var(--text-dim);">Built for Professional IT Instruction Application 2026</p>
     </footer>
 
-    <!-- JavaScript for Mobile Menu Toggle -->
+    <!-- JavaScript for Mobile Menu -->
     <script>
         const hamburger = document.getElementById("hamburger");
         const navMenu = document.getElementById("nav-menu");
@@ -386,7 +415,6 @@
             navMenu.classList.toggle("active");
         });
 
-        // Close menu when a link is clicked
         document.querySelectorAll(".nav-link").forEach(link => {
             link.addEventListener("click", () => {
                 hamburger.classList.remove("active");
